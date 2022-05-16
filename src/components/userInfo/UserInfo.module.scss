@@ -1,0 +1,39 @@
+.headerContainer {
+  background: #0064EB;
+  height: 72px;
+  width: 100%;
+
+  .gitImg {
+    width: 40.98px;
+    height: 40px;
+    padding: 16px 0 16px 41px;
+  }
+
+  .searchContainer {
+    width: 500px;
+    height: 40px;
+    position: absolute;
+    left: 104px;
+    top: 16px;
+    bottom: 16px;
+
+    .searchIcon {
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      left: 19px;
+      top: 13px;
+      bottom: 13px;
+    }
+
+    .input {
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      border: none;
+      padding-left: 44px;
+    }
+  }
+}
+
+
