@@ -1,0 +1,27 @@
+
+.paginator_container {
+  margin: 0 auto;
+  width: 337px;
+  height: 25px;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.paginator_container_number {
+  background-color: green;
+}
+
+.paginator_container_link {
+  background-color: blue;
+}
+
+.paginator_container_active {
+  background-color: coral;
+}
+
+.paginator_container_dotes {
+  background-color: rgba(154, 130, 203, 0.95);
+}

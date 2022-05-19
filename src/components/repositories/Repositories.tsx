@@ -1,25 +1,30 @@
 import React from 'react';
-import style from './UserInfo.module.scss';
-import groupImg from './../../assets/img/group_24px.svg'
-import personImg from './../../assets/img/person_24px.svg'
+import style from './Repositories.module.scss';
+import {Repository} from "./repository/Repository";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../Store";
+import {ReposType} from "../../repos-reducer";
 
-export function UserInfo() {
+export function Repositories() {
+
+
+    const repositories = useSelector<AppRootStateType, Array<ReposType>>((state) => state.repos)
+
     return (
-        <div className={style.userInfoContainer}>
-            <img src="https://avatarko.ru/img/kartinka/1/avatarko_anonim.jpg" alt="user" className={style.userPhoto}/>
+        <div className={style.repositoriesContainer}>
+            <div className={style.repositories}>Repositories ({repositories.length})</div>
+            {
+                repositories.map(rep => {
+                    return <Repository
+                        key={rep.id}
+                        name={rep.name}
+                        description={rep.description}
+                        htmlUrl={rep.html_url}
+                    />
 
-            <h2 className={style.userName}>UserName</h2>
-            <span className={style.userNick}>username</span>
-
-            <div className={style.followers}>
-                <img src={groupImg} alt="groupImg"/>
-                <span>12 followers</span>
-            </div>
-
-            <div className={style.following}>
-                <img src={personImg} alt="personImg"/>
-                <span>10 following</span>
-            </div>
+                })
+            }
         </div>
+
     )
 }

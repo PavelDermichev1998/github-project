@@ -1,60 +1,15 @@
-.userPhoto {
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  left: 57px;
-  top: 111px;
+.repositoriesContainer {
+  width: 100vh;
+  height: 100vh;
+  margin: 0 100px 0 700px
 }
 
-.userName {
-  position: absolute;
-  height: 34px;
-  left: 4.1%;
-  right: 83.45%;
-  top: calc(50% - 34px/2 + 53px);
+.repositories {
+
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-  font-size: 26px;
+  font-size: 32px;
   line-height: 130%;
-}
-
-.userNick {
-  position: absolute;
-  height: 28.74px;
-  left: 4.1%;
-  right: 90%;
-  top: calc(50% - 28.74px/2 + 96.37px);
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  color: #0064EB;
-}
-
-.followers {
-  position: absolute;
-  left: 6.44%;
-  right: 85.14%;
-  top: 67.71%;
-  bottom: 29.17%;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-}
-.following {
-  position: absolute;
-  left: 18.38%;
-  right: 74.52%;
-  top: 67.71%;
-  bottom: 29.17%;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
 }
 

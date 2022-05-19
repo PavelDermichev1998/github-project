@@ -1,19 +1,34 @@
 import React from 'react';
-import style from './Header.module.scss';
-import gitImg from '../../assets/img/Vector.svg'
-import searchImg from '../../assets/img/image.svg'
+import style from './UserInfo.module.scss';
+import groupImg from './../../assets/img/group_24px.svg'
+import personImg from './../../assets/img/person_24px.svg'
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../Store";
 
-export function Header() {
+export function UserInfo() {
+
+    const login = useSelector<AppRootStateType, string>((state) => state.user.login)
+    const name = useSelector<AppRootStateType, string>((state) => state.user.name)
+    const avatar = useSelector<AppRootStateType, string>((state) => state.user.avatar_url)
+    const followers = useSelector<AppRootStateType, number>((state) => state.user.followers)
+    const following = useSelector<AppRootStateType, number>((state) => state.user.following)
+    const htmlUrl = useSelector<AppRootStateType, string>((state) => state.user.html_url)
+
     return (
-        <div className={style.headerContainer}>
-            <img src={gitImg} alt="git-icon" className={style.gitImg}/>
-            <div className={style.searchContainer}>
-                <img src={searchImg} alt="icon search" className={style.searchIcon}/>
-                <input
-                    type='search'
-                    placeholder='Enter GitHub username'
-                    className={style.input}
-                />
+        <div className={style.userInfoContainer}>
+            <img src={avatar} alt="user" className={style.userPhoto}/>
+
+            <h2 className={style.userName}>{name}</h2>
+            <a href={htmlUrl} className={style.userNick} target="_blank">{login}</a>
+
+            <div className={style.followers}>
+                <img src={groupImg} alt="groupImg"/>
+                <span>{followers} followers</span>
+            </div>
+
+            <div className={style.following}>
+                <img src={personImg} alt="personImg"/>
+                <span>{following} following</span>
             </div>
         </div>
     )
