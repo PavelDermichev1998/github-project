@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Repository.module.scss';
 
-export function Repository(props: ReposPropsType) {
+export function Repository(props: RepositoryPropsType) {
     return (
         <div className={style.repositoryContainer}>
             <a href={props.htmlUrl} className={style.repositoryName} target="_blank">{props.name}</a>
@@ -11,7 +11,7 @@ export function Repository(props: ReposPropsType) {
 }
 
 //types
-type ReposPropsType = {
+type RepositoryPropsType = {
     name: string
     description: string | null
     htmlUrl: string

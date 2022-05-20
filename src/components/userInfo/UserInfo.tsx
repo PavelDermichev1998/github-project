@@ -3,7 +3,7 @@ import style from './UserInfo.module.scss';
 import groupImg from './../../assets/img/group_24px.svg'
 import personImg from './../../assets/img/person_24px.svg'
 import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../Store";
+import {AppRootStateType} from "../../store";
 
 export function UserInfo() {
 

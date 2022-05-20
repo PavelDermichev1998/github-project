@@ -1,15 +1,15 @@
 import React, {ChangeEvent, KeyboardEvent, useCallback} from 'react';
 import style from './Header.module.scss';
 import gitImg from '../../assets/img/Vector.svg'
-import searchImg from '../../assets/img/image.svg'
-import {getUserTC} from "../../users-reducer";
+import searchImg from '../../assets/img/search.svg'
+import {getUserTC} from "../../reducers/users-reducer";
 import {useSelector} from "react-redux";
-import {AppRootStateType, useTypedDispatch} from "../../Store";
-import {getReposTC} from "../../repos-reducer";
+import {AppRootStateType, useTypedDispatch} from "../../store";
+import {getReposTC} from "../../reducers/repos-reducer";
 
 export function Header() {
 
-    let searchValue = useSelector<AppRootStateType, string>((state) => state.user.searchValue)
+    let searchValue = useSelector<AppRootStateType, string>((state) => state.app.searchValue)
     const dispatch = useTypedDispatch()
 
     const addItemHandler = useCallback((searchValue: string) => {
