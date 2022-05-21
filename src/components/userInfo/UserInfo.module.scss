@@ -1,60 +1,68 @@
-.userPhoto {
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  left: 57px;
-  top: 111px;
-}
-
-.userName {
-  position: absolute;
-  height: 34px;
-  left: 4.1%;
-  right: 83.45%;
-  top: calc(50% - 34px/2 + 53px);
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 130%;
-}
-
-.userNick {
-  position: absolute;
-  height: 28.74px;
-  left: 4.1%;
-  right: 90%;
-  top: calc(50% - 28.74px/2 + 96.37px);
-  font-family: 'Inter';
+.user_info_container {
+  background-color: #f9f9f9;
+  display: grid;
+  grid-area: userinfo;
+  grid-template-rows: 55% 6% 4% 4%;
+  grid-template-areas: 'photo photo'
+                       'username username'
+                       'usernick usernick'
+                       'followers following';
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 150%;
+
+  position: relative;
+  @media screen and (max-width: 1120px) {
+   display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.user_photo {
+  grid-area: photo;
+  max-height: 280px;
+  border-radius: 180px;
+  margin: 57px 57px 0 57px;
+  @media screen and (max-width: 1120px) {
+    max-height: 200px;
+  }
+}
+
+.user_name {
+  grid-area: username;
+  margin: 0 57px 0 57px;
+}
+
+.user_nick_name {
+  grid-area: usernick;
   color: #0064EB;
+  text-decoration: none;
+  margin: 0 57px 0 57px;
 }
 
 .followers {
-  position: absolute;
-  left: 6.44%;
-  right: 85.14%;
-  top: 67.71%;
-  bottom: 29.17%;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
+  grid-area: followers;
+  margin: 20px 57px 0 57px;
+
+  span {
+    padding-left: 10px;
+  }
 }
+
 .following {
-  position: absolute;
-  left: 18.38%;
-  right: 74.52%;
-  top: 67.71%;
-  bottom: 29.17%;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
+  grid-area: following;
+  margin: 20px 57px 0 0;
+
+  span {
+    padding-left: 10px;
+  }
+  @media screen and (max-width: 1120px) {
+    margin: 20px 57px 0 57px;
+  }
 }
+
 

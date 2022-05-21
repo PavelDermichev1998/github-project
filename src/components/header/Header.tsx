@@ -1,28 +1,24 @@
-import React, {ChangeEvent, KeyboardEvent, useCallback} from 'react';
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 import style from './Header.module.scss';
 import gitImg from '../../assets/img/Vector.svg'
 import searchImg from '../../assets/img/search.svg'
-import {getUserTC} from "../../reducers/users-reducer";
-import {useSelector} from "react-redux";
-import {AppRootStateType, useTypedDispatch} from "../../store";
-import {getReposTC} from "../../reducers/repos-reducer";
+import {getUserTC} from '../../reducers/users-reducer';
+import {useTypedDispatch} from '../../store';
+import {getReposTC} from '../../reducers/repos-reducer';
+import {setSearchValueAC} from '../../reducers/app-reducer';
 
-export function Header() {
+export const Header = React.memo(function (props: {searchValue: string}) {
 
-    let searchValue = useSelector<AppRootStateType, string>((state) => state.app.searchValue)
     const dispatch = useTypedDispatch()
 
-    const addItemHandler = useCallback((searchValue: string) => {
-        dispatch(getUserTC(searchValue))
-        dispatch(getReposTC(searchValue))
-    },[searchValue])
-
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        searchValue = e.currentTarget.value
+        dispatch(setSearchValueAC(e.currentTarget.value))
     }
+
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.charCode === 13) {
-            addItemHandler(searchValue);
+            dispatch(getUserTC(props.searchValue))
+            dispatch(getReposTC(props.searchValue))
         }
     }
 
@@ -32,7 +28,7 @@ export function Header() {
             <div className={style.searchContainer}>
                 <img src={searchImg} alt="icon search" className={style.searchIcon}/>
                 <input
-                    type='search'
+                    type='text'
                     placeholder='Enter GitHub username'
                     className={style.input}
                     onChange={onChangeHandler}
@@ -41,4 +37,4 @@ export function Header() {
             </div>
         </div>
     )
-}
+})

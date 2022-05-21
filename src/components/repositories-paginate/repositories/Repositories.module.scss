@@ -1,12 +1,13 @@
-.repositoriesContainer {
-  width: 100vh;
-  height: 100vh;
-  margin: 0 100px 0 700px
+.repositories_container {
+  background: #f9f9f9;
+  @media screen and (max-width: 1120px) {
+    padding-left: 32px;
+  }
 }
 
-.repositories {
-
-  font-family: 'Inter';
+.repositories_text {
+  padding: 28px 0 29px 0;
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 32px;

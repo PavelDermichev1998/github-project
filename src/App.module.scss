@@ -1,4 +1,23 @@
 .app {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: 30% 70%;
+  grid-template-areas: 'header header'
+                       'userinfo repos';
 
+  @media screen and (max-width: 1120px) {
+    grid-template-columns: 100%;
+    grid-template-areas: 'header'
+                       'userinfo'
+                       'repos';
+  }
 }
+
+.app_not_initialized {
+  grid-template-columns: 100%;
+  grid-template-areas: 'header'
+                       'main';
+}
+
 

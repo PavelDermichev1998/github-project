@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import ReactPaginate from 'react-paginate';
-import style from "./RepositoryPaginate.module.scss";
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../store";
-import {ReposType} from "../../reducers/repos-reducer";
-import {Repositories} from "./repositories/Repositories";
+import style from './RepositoryPaginate.module.scss';
+import {useSelector} from 'react-redux';
+import {AppRootStateType} from '../../store';
+import {ReposType} from '../../reducers/repos-reducer';
+import {Repositories} from './repositories/Repositories';
 
 export function RepositoryPaginate(props: { pageCount: number }) {
 
@@ -34,30 +34,27 @@ export function RepositoryPaginate(props: { pageCount: number }) {
     }
 
     return (
-        <div>
+        <div className={style.repository_paginate_container}>
             <Repositories currentRepos={currentRepos}/>
-            <div>
-                <div>
+            <div className={style.repository_paginate_block}>
+                <div className={style.repository_paginate_text}>
                     {pageRangeRepos()} of {repos.length} items
                 </div>
                 <ReactPaginate
                     onPageChange={onPageChange}
                     pageCount={pageCount}
-                    breakLabel="..."
-                    nextLabel=">"
-                    previousLabel="<"
+                    breakLabel={'...'}
+                    nextLabel={'>'}
+                    previousLabel={'<'}
                     marginPagesDisplayed={1}
                     pageRangeDisplayed={2}
                     containerClassName={style.paginator_container}
-                    pageClassName={style.paginator_container_number}
-                    pageLinkClassName={style.paginator_container_link}
                     activeLinkClassName={style.paginator_container_active}
-                    breakClassName={style.paginator_container_dotes}
+                    nextClassName={style.next_item}
+                    previousClassName={style.previous_item}
                 />
             </div>
         </div>
     );
 }
 
-//                nextLinkClassName={style.pageNumber === pageCount ? style.}
-//                previousLinkClassName={style.pageNumber === startOfPage ?}

@@ -1,9 +1,9 @@
-import {gitAPI, UserType} from "../api/gti-api";
-import {AppThunk} from "../store";
-import {setErrorAC, setInitializedAC} from "./app-reducer";
+import {gitAPI, UserType} from '../api/gti-api';
+import {AppThunk} from '../store';
+import {setErrorAC, setInitializedAC, setIsLoadingAC} from './app-reducer';
 
 
-const initialState: initialStateType = {
+const initialState: UserDomainType = {
     login: '',
     name: '',
     avatar_url: '',
@@ -12,7 +12,7 @@ const initialState: initialStateType = {
     html_url: '',
 }
 
-export const userReducer = (state: initialStateType = initialState, action: UsersActionsType): initialStateType => {
+export const userReducer = (state: UserDomainType = initialState, action: UsersActionsType): UserDomainType => {
     switch (action.type) {
         case 'GET-USER':
             return {
@@ -35,6 +35,7 @@ export const getUserAC = (data: UserType) => ({type: 'GET-USER', data} as const)
 // thunks
 export const getUserTC = (login: string): AppThunk => (dispatch) => {
     dispatch(setInitializedAC(true))
+    dispatch(setIsLoadingAC(true))
     gitAPI.getUser(login)
         .then((res) => {
             dispatch(setErrorAC(false))
@@ -43,11 +44,14 @@ export const getUserTC = (login: string): AppThunk => (dispatch) => {
         .catch(() => {
             dispatch(setErrorAC(true))
         })
+        .finally(() => {
+            dispatch(setIsLoadingAC(false))
+        })
 }
 
 
 // types
-export type initialStateType = {
+export type UserDomainType = {
     login: string
     name: string
     avatar_url: string

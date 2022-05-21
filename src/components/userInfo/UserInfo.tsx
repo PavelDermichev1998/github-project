@@ -2,34 +2,36 @@ import React from 'react';
 import style from './UserInfo.module.scss';
 import groupImg from './../../assets/img/group_24px.svg'
 import personImg from './../../assets/img/person_24px.svg'
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../store";
+import {UserDomainType} from '../../reducers/users-reducer';
 
-export function UserInfo() {
+export const UserInfo = React.memo(function (props: UserInfoPropsType) {
 
-    const login = useSelector<AppRootStateType, string>((state) => state.user.login)
-    const name = useSelector<AppRootStateType, string>((state) => state.user.name)
-    const avatar = useSelector<AppRootStateType, string>((state) => state.user.avatar_url)
-    const followers = useSelector<AppRootStateType, number>((state) => state.user.followers)
-    const following = useSelector<AppRootStateType, number>((state) => state.user.following)
-    const htmlUrl = useSelector<AppRootStateType, string>((state) => state.user.html_url)
+    function toFix (fixNumber: number) {
+        if (fixNumber >= 1000) {
+            let newFixedNumber = (fixNumber/1000).toFixed(1)
+            return newFixedNumber + 'k';
+        }
+        return fixNumber
+    }
 
     return (
-        <div className={style.userInfoContainer}>
-            <img src={avatar} alt="user" className={style.userPhoto}/>
-
-            <h2 className={style.userName}>{name}</h2>
-            <a href={htmlUrl} className={style.userNick} target="_blank">{login}</a>
-
+        <span className={style.user_info_container}>
+            <img src={props.user.avatar_url} alt="user" className={style.user_photo}/>
+            <h2 className={style.user_name}>{props.user.name}</h2>
+            <a href={props.user.html_url} className={style.user_nick_name} target="_blank" rel="noreferrer">{props.user.login}</a>
             <div className={style.followers}>
                 <img src={groupImg} alt="groupImg"/>
-                <span>{followers} followers</span>
+                <span>{toFix(props.user.followers)} followers</span>
             </div>
-
             <div className={style.following}>
                 <img src={personImg} alt="personImg"/>
-                <span>{following} following</span>
+                <span>{toFix(props.user.following)} following</span>
             </div>
-        </div>
+        </span>
     )
+})
+
+//types
+type UserInfoPropsType = {
+   user: UserDomainType
 }

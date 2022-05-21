@@ -1,9 +1,9 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk'
-import {userReducer, UsersActionsType} from "./reducers/users-reducer";
-import {ReposActionsType, reposReducer} from "./reducers/repos-reducer";
-import {useDispatch} from "react-redux";
-import {AppActionsType, appReducer} from "./reducers/app-reducer";
+import {userReducer, UsersActionsType} from './reducers/users-reducer';
+import {ReposActionsType, reposReducer} from './reducers/repos-reducer';
+import {useDispatch} from 'react-redux';
+import {AppActionsType, appReducer} from './reducers/app-reducer';
 
 const rootReducer = combineReducers({
     user: userReducer,

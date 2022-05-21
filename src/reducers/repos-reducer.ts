@@ -1,7 +1,6 @@
-import {Dispatch} from 'redux'
-import {gitAPI, RepositoryType} from "../api/gti-api";
-import {setErrorAC} from "./app-reducer";
-import {AppThunk} from "../store";
+import {gitAPI, RepositoryType} from '../api/gti-api';
+import {setErrorAC, setIsLoadingAC} from './app-reducer';
+import {AppThunk} from '../store';
 
 const initialState: initialStateType = []
 
@@ -21,13 +20,17 @@ export const getReposAC = (repositories: Array<RepositoryType>) => ({type: 'SET-
 // thunks
 export const getReposTC = (login: string): AppThunk  => {
     return (dispatch) => {
+        dispatch(setIsLoadingAC(true))
         gitAPI.getRepositories(login)
             .then((res) => {
                 dispatch(setErrorAC(false))
                 dispatch(getReposAC(res.data))
             })
-            .catch((err) => {
+            .catch(() => {
                 dispatch(setErrorAC(true))
+            })
+            .finally(() => {
+                dispatch(setIsLoadingAC(false))
             })
     }
 }
