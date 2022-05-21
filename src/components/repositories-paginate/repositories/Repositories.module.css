@@ -1,0 +1,19 @@
+.repositories_container {
+  background: #f9f9f9;
+}
+@media screen and (max-width: 1120px) {
+  .repositories_container {
+    padding-left: 32px;
+  }
+}
+
+.repositories_text {
+  padding: 28px 0 29px 0;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 130%;
+}
+
+/*# sourceMappingURL=Repositories.module.css.map */

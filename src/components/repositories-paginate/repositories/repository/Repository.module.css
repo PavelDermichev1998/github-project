@@ -1,0 +1,30 @@
+.repository_container {
+  background: #FFFFFF;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 0 24px 32px;
+  gap: 16px;
+  margin: 0 56px 24px 0;
+}
+.repository_container .repository_name {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #0064EB;
+  text-decoration: none;
+}
+.repository_container .repository_description {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+}
+
+/*# sourceMappingURL=Repository.module.css.map */
